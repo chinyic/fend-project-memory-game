@@ -18,6 +18,10 @@ let deck = document.querySelector('.deck');
 let moves = 0
 let movesCount = document.getElementsByClassName('moves');
 
+let stars = document.getElementsByClassName('stars');
+let starsArray = document.querySelectorAll('.stars li');
+/*timer*/
+let timer = document.querySelector('.timer');
 
    /*
     * Display the cards on the page
@@ -30,10 +34,7 @@ function startGame(){
     cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
   }
-
-  };
-
-
+};
 
    // Shuffle function from http://stackoverflow.com/a/2450976
    function shuffle(array) {
@@ -49,20 +50,19 @@ function startGame(){
 
        return array;
 }
-       /*array for open cards*/
-
 
 /*register deck to click event, second parameter card */
 $('.deck').on('click', '.card', handler);
 /* The handler "knows" that any .card is e.target and this */
        // toggleClass the .open and .show classes
+/* set up the event listener for a card. If a card is clicked:
+        *  - display the card's symbol (put this functionality in another function that you call from this one)
+*/
 function handler(event) {
 $(this).toggleClass('open show');
 };
-   /*
-    * set up the event listener for a card. If a card is clicked:
-    *  - display the card's symbol (put this functionality in another function that you call from this one)
-    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+
+/*    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
     *  - if the list already has another card, check to see if the two cards match
     *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
     *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
