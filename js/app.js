@@ -1,14 +1,13 @@
 $(document).ready(function(){
+  startGame()
+});
 
    /*
     * Create a list that holds all of your cards
     */
+let card = document.getElementsByClassName('card');
+let cards = [...card];
 
-const cardsList = ["fa fa-diamond", "fa fa-paper-plane-o","fa fa-anchor",
-   "fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf",
-   "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf",
-   "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o",
-   "fa fa-cube"];
 
   /*load new game on page load*/
 
@@ -50,6 +49,3 @@ const cardsList = ["fa fa-diamond", "fa fa-paper-plane-o","fa fa-anchor",
     *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
     */
-
-
- });
