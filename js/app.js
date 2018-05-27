@@ -25,7 +25,6 @@ function startGame(){
     cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
   }
-  
 };
 
 
