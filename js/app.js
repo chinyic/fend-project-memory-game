@@ -8,10 +8,15 @@ $(document).ready(function(){
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 let cardShuffle = shuffle(cards);
+let openCards = []
+let closedCards = []
 
 /*deck of cards*/
 let deck = document.querySelector('.deck');
-  /*load new game on page load*/
+
+/*variables for moves*/
+let moves = 0
+let movesCount = document.getElementsByClassName('moves');
 
 
    /*

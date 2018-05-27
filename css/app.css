@@ -112,3 +112,9 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*css for timer*/
+.timer {
+    display: inline-block;
+    text-align: right;
+}
