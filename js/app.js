@@ -7,8 +7,10 @@ $(document).ready(function(){
     */
 let card = document.getElementsByClassName('card');
 let cards = [...card];
+let cardShuffle = shuffle(cards);
 
-
+/*deck of cards*/
+let deck = document.querySelector('.deck');
   /*load new game on page load*/
 
 
@@ -18,7 +20,13 @@ let cards = [...card];
     *   - loop through each card and create its HTML
     *   - add each card's HTML to the page
     */
+function startGame(){
+  for (let i = 0; i < cardShuffle.length; i++) {
+cardShuffle[i].classList.remove('open','show', 'match');
+    deck.appendChild(cardShuffle[i]);
 
+  }
+};
 
 
 
