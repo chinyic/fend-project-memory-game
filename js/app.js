@@ -22,10 +22,10 @@ let deck = document.querySelector('.deck');
     */
 function startGame(){
   for (let i = 0; i < cardShuffle.length; i++) {
-cardShuffle[i].classList.remove('open','show', 'match');
+    cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
-
   }
+  
 };
 
 
