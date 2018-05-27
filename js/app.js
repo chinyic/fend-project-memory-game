@@ -47,13 +47,13 @@ function startGame(){
        /*array for open cards*/
 
 
-
-       $('.deck').on('click', '.card', handler);
-       /* The handler "knows" that any .card is e.target and this */
+/*register deck to click event, second parameter card */
+$('.deck').on('click', '.card', handler);
+/* The handler "knows" that any .card is e.target and this */
        // toggleClass the .open and .show classes
-       function handler(event) {
-         $(this).toggleClass('open show');
-       };
+function handler(event) {
+$(this).toggleClass('open show');
+};
    /*
     * set up the event listener for a card. If a card is clicked:
     *  - display the card's symbol (put this functionality in another function that you call from this one)
