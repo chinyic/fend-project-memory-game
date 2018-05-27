@@ -6,12 +6,6 @@ const cardsList = ["fa fa-diamond", "fa fa-paper-plane-o","fa fa-anchor",
 "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf",
 "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o",
 "fa fa-cube"];
-
-
-let card = document.getElementsByClassName('card')
-/*spread operator*/
-let cards = [...card]
-let deck = document.getElementByID('deck')
 let moveCount = 0
 
 
@@ -21,21 +15,30 @@ let cardClosed = []
 
 
 /*load new game on page load*/
-document.body.onload = function newGame();
+
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-function newGame(cards) {
-  for (let i = 0, i < cards.length, i++) {
-    deck.appendChild(cards[i]);
+const cardsContainer = document.querySelector(".deck");
 
-  }
+/*create cards*/
+for (let i=0; i < cardsList.length; i++) {
+  const card = document.createElement("li");
+  /*add card element to HTML*/
+  card.classList.add("card");
+  /*add innericon that loops over all cards*/
+  card.innerHTML ="<i class="" + cardsList[i] + ""</i>";
+  cardsContainer.appendChild(card);
+
+console.log(card.innerHTML);
+
 };
-let shuffleCards = shuffle(cards);
-console.log(shuffleCards);
+
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -62,5 +65,3 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
- document.getElementByID("card")
