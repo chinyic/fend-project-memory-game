@@ -24,9 +24,10 @@ let starsArray = document.querySelectorAll('.stars li');
 let timer = document.querySelector('.timer');
 let timerMin = document.getElementById('#timer-min');
 let timerSec= document.getElementById('#timer-sec');
+let timeTrigger = 0;
 let seconds = 0;
 let minutes = 0;
-let interval = 0;
+let t;
 
 
    /*
@@ -53,8 +54,9 @@ minutes = 0;
 seconds = 0;
 timerMin = 0;
 timerSec =0;
+timeTrigger =0;
 timer = document.querySelector('.timer');
-clearInterval(interval);
+clearInterval(t);
 
 
   }
@@ -87,8 +89,11 @@ function clickedCard(event) {
 $(this).toggleClass('open show');
 /*push card to array*/
 openedCards.push(this);
-
+timeTrigger();
 };
+
+/*timer function*/
+
 
 /*    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
     *  - if the list already has another card, check to see if the two cards match
