@@ -52,15 +52,16 @@ movesNumber.innerHTML = moves;
 /*reset timer */
 minutes = 0;
 seconds = 0;
-timerMin = 0;
-timerSec =0;
-timeTrigger =0;
+timerMin.innerHTML = minutes;
+timerSec.innerHTML = '0' + seconds;
+timeTrigger = 0;
 timer = document.querySelector('.timer');
 clearInterval(t);
 
 
   }
 };
+
 
    // Shuffle function from http://stackoverflow.com/a/2450976
    function shuffle(array) {
@@ -89,10 +90,34 @@ function clickedCard(event) {
 $(this).toggleClass('open show');
 /*push card to array*/
 openedCards.push(this);
-timeTrigger();
+timeTrigger++;
+if (timeTrigger===1){
+  startTimer();
+}
 };
 
 /*timer function*/
+function startTimer(){
+  t = setInterval(function(){
+        seconds++;
+        if (seconds>=60) {
+          seconds =0;
+          minutes++;
+          if (minutes ===60){
+            seconds = 0;
+            minutes = 0;
+          }
+        }
+
+        /*add leading 0 to seconds timer*/
+        timerMin.innerHTML = minutes;
+        if (seconds<10) {
+          timerSec.innerHTML = '0' + seconds;
+        } else {
+          timerSec.innerHTML = seconds;
+        } 1000;
+      });
+    }
 
 
 /*    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
