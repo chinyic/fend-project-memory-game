@@ -2,6 +2,7 @@ $(document).ready(function(){
   startGame()
 });
 
+
    /*
     * Create a list that holds all of your cards
     */
@@ -10,7 +11,7 @@ let cards = [...card];
 let cardShuffle = shuffle(cards);
 let openedCards = []
 let matchedCards = []
-
+let matchCount = 0;
 /*deck of cards*/
 let deck = document.querySelector('.deck');
 
@@ -22,8 +23,8 @@ let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
 /*timer*/
 let timer = document.querySelector('.timer');
-let timerMin = document.getElementById('#timer-min');
-let timerSec= document.getElementById('#timer-sec');
+let timerMin = document.getElementById('timer-min');
+let timerSec= document.getElementById('timer-sec');
 let timeTrigger = 0;
 let seconds = 0;
 let minutes = 0;
@@ -36,6 +37,8 @@ let t;
     *   - loop through each card and create its HTML
     *   - add each card's HTML to the page
     */
+
+
 function startGame(){
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match');
@@ -45,17 +48,18 @@ function startGame(){
 
 openedCards =[];
 matchedCards = 0;
+matchCount = 0;
 /*reset moves counter*/
 moves = 0;
 movesNumber.innerHTML = moves;
 
 /*reset timer */
+timer = document.querySelector('.timer');
 minutes = 0;
 seconds = 0;
 timerMin.innerHTML = minutes;
 timerSec.innerHTML = '0' + seconds;
 timeTrigger = 0;
-timer = document.querySelector('.timer');
 
 clearInterval(t);
 
@@ -91,11 +95,23 @@ function clickedCard(event) {
 $(this).toggleClass('open show');
 /*push card to array*/
 openedCards.push(this);
+
 timeTrigger++;
 if (timeTrigger===1){
   startTimer();
 }
+/*add to moves and push to matched cards*/
+if (openedCards.length===2){
+  addMoves(); /*need to declare moves function*/
+
+}
 };
+
+function addMoves (){
+  moves++;
+  movesNumber.innerHTML = moves;
+
+}
 
 /*timer function*/
 function startTimer(){
