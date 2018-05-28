@@ -11,13 +11,13 @@ let cards = [...card];
 let cardShuffle = shuffle(cards);
 let openedCards = []
 let matchedCards = []
-let matchCount = 0;
+let matchCount = 0; /*this is the number of matched pairs (8)*/
 /*deck of cards*/
 let deck = document.querySelector('.deck');
 
 /*variables for moves*/
 let moves = 0;
-let movesNumber = document.getElementsByClassName('.moves');
+let movesNumber = document.getElementsByClassName('moves');
 
 let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
@@ -51,7 +51,7 @@ matchedCards = 0;
 matchCount = 0;
 /*reset moves counter*/
 moves = 0;
-movesNumber.innerHTML = moves;
+movesNumber.textContent = moves;
 
 /*reset timer */
 timer = document.querySelector('.timer');
@@ -109,7 +109,7 @@ if (openedCards.length===2){
 
 function addMoves (){
   moves++;
-  movesNumber.innerHTML = moves;
+  movesNumber.textContent = moves;
 
 }
 
