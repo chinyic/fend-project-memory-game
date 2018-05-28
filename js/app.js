@@ -30,7 +30,8 @@ let seconds = 0;
 let minutes = 0;
 let t;
 
-
+/*restart button*/
+let restart = document.querySelector('.restart');
    /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
@@ -51,7 +52,7 @@ matchedCards = 0;
 matchCount = 0;
 /*reset moves counter*/
 moves = 0;
-movesNumber.textContent = moves;
+movesNumber.innerHTML = moves;
 
 /*reset timer */
 timer = document.querySelector('.timer');
@@ -117,7 +118,7 @@ function addMoves (){
 function startTimer(){
   t = setInterval(function(){
         seconds++;
-        if (seconds>=60) {
+        if (seconds===60) {
           seconds =0;
           minutes++;
           if (minutes ===60){
@@ -144,3 +145,9 @@ function startTimer(){
     *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
     */
+
+/*restart game*/
+restart.onclick = function (){
+  cardShuffle;
+  startGame();
+}
