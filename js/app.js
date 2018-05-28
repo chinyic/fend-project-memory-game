@@ -9,9 +9,9 @@ $(document).ready(function(){
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 let cardShuffle = shuffle(cards);
-let openedCards = []
-let matchedCards = []
-let matchCount = 0; /*this is the number of matched pairs (8)*/
+let openedCards = [];
+let matchedCards = 0;/*this is the number of matched pairs (8)*/
+let matchedCard = document.getElementsByClassName('match');
 /*deck of cards*/
 let deck = document.querySelector('.deck');
 
@@ -49,7 +49,9 @@ function startGame(){
 
 openedCards =[];
 matchedCards = 0;
-matchCount = 0;
+console.log('matched cards: '+matchedCards+';');
+
+
 /*reset moves counter*/
 moves = 0;
 movesNumber.innerHTML = moves;
@@ -104,7 +106,7 @@ if (timeTrigger===1){
 /*add to moves and push to matched cards*/
 if (openedCards.length===2){
   addMoves(); /*need to declare moves function*/
-
+/*add function for checking matchedCards*/
 }
 };
 
