@@ -8,15 +8,15 @@ $(document).ready(function(){
 let card = document.getElementsByClassName('card');
 let cards = [...card];
 let cardShuffle = shuffle(cards);
-let openCards = []
-let closedCards = []
+let openedCards = []
+let matchedCards = []
 
 /*deck of cards*/
 let deck = document.querySelector('.deck');
 
 /*variables for moves*/
-let moves = 0
-let movesCount = document.getElementsByClassName('moves');
+let moves = 0;
+let movesNumber = document.getElementsByClassName('.moves');
 
 let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
@@ -37,6 +37,14 @@ function startGame(){
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
+
+/*reset cardarray to 0*/
+
+openedCards =[];
+matchedCards = 0;
+moves = 0;
+movesNumber.innerHTML = moves;
+
   }
 };
 
@@ -56,14 +64,18 @@ function startGame(){
 }
 
 /*register deck to click event, second parameter card */
-$('.deck').on('click', '.card', handler);
+$('.deck').on('click', '.card', clickedCard);
 /* The handler "knows" that any .card is e.target and this */
        // toggleClass the .open and .show classes
 /* set up the event listener for a card. If a card is clicked:
         *  - display the card's symbol (put this functionality in another function that you call from this one)
 */
-function handler(event) {
+function clickedCard(event) {
+  /*display card on click*/
 $(this).toggleClass('open show');
+/*push card to array*/
+openedCards.push(this);
+
 };
 
 /*    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
