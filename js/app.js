@@ -22,9 +22,11 @@ let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
 /*timer*/
 let timer = document.querySelector('.timer');
+let timerMin = document.getElementById('#timer-min');
+let timerSec= document.getElementById('#timer-sec');
 let seconds = 0;
 let minutes = 0;
-let hours = 0;
+let interval = 0;
 
 
    /*
@@ -42,8 +44,18 @@ function startGame(){
 
 openedCards =[];
 matchedCards = 0;
+/*reset moves counter*/
 moves = 0;
 movesNumber.innerHTML = moves;
+
+/*reset timer */
+minutes = 0;
+seconds = 0;
+timerMin = 0;
+timerSec =0;
+timer = document.querySelector('.timer');
+clearInterval(interval);
+
 
   }
 };
