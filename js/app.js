@@ -17,7 +17,7 @@ let deck = document.querySelector('.deck');
 
 /*variables for moves*/
 let moves = 0;
-let movesNumber = document.getElementsByClassName('moves');
+let movesNumber = document.getElementById('moves-number');
 
 let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
@@ -109,7 +109,7 @@ if (openedCards.length===2){
 
 function addMoves (){
   moves++;
-  movesNumber.textContent = moves;
+  movesNumber.innerHTML = moves;
 
 }
 
