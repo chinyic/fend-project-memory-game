@@ -87,13 +87,12 @@ h1 {
 }
 
 .deck .card.unmatched {
-
+  visibility:initial;
 
 }
 
 .deck .card.disabled {
   pointer-events:none;
-  opacity: 0.9
 }
 /*
  * Styles for the Score Panel

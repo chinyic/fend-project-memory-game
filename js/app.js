@@ -106,7 +106,7 @@ if (timeTrigger===1){
 }
 
 if (event.target.classList.contains('card') && openedCards.length<2){
-  /*push card to array*/
+  /*push card to open cards array*/
   openedCards.push(this);
 }
 /*add to moves and push to matched cards*/
@@ -115,43 +115,24 @@ if (openedCards.length===2){
 /*add function for checking matchedCards*/
   if (openedCards[0].innerHTML===openedCards[1].innerHTML){
   matchedCards++;
-  matchArray.push(openedCards[0]);
-  matchArray.push(openedCards[1]);
-  /*add function for match*/
+  //add matched cards to match array
   match();
   /*add function for stop timer*/
   stopTimer();
   } else {
     /*add function for noMatch*/
-    for (let i=0; i<cards.length; i++){
-      cards[i].removeEventListener('click',clickedCard);
       noMatch();
     };
-//timeout function for reverting card
-    setTimeOut(function revertCard(){
-      removeOpenedCards();
-      //add eventlistener clickedCard back in after timer
-      for (let i=0; i<cards.length; i++){
-        cards[i].addEventListener('click',clickedCard);
-      };
-    }, 1000);
+
   }
-}
 };
 
-
-function removeOpenedCards(){
-  openedCards[0].remove('open', 'show','disabled');
-  openedCards[1].remove('open', 'show','disabled');
-  openedCards = [];
-
-}
 
 function match(){
   openedCards[0].classList.add('match', 'disabled');
   openedCards[1].classList.add('match', 'disabled');
-  openedCards[0].classList.remove('open', 'show', 'disabled');
-  openedCards[1].classList.remove('open', 'show', 'disabled');
+  openedCards[0].classList.remove('open', 'show');
+  openedCards[1].classList.remove('open', 'show');
   matchArray.push(openedCards[0]);
   matchArray.push(openedCards[1]);
   openedCards =[];
@@ -159,10 +140,23 @@ function match(){
 };
 
 function noMatch(){
-  openedCards[0].classList.add('unmatched');
-  openedCards[1].classList.add('unmatched');
+  openedCards[0].classList.add('unmatched', 'disabled');
+  openedCards[1].classList.add('unmatched','disabled');
+
+  //timeout function for reverting card
+      setTimeOut(function revertCard(){
+        removeOpenedClass();
+        //add eventlistener clickedCard back in after timer
+      }, 1000);
 }
 
+
+function removeOpenedClass(){
+  openedCards[0].remove('open', 'show','disabled', 'unmatched');
+  openedCards[1].remove('open', 'show','disabled', 'unmatched');
+  openedCards = [];
+
+}
 function addMoves (){
   moves++;
   movesNumber.innerHTML = moves;
