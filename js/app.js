@@ -97,15 +97,20 @@ $('.deck').on('click', '.card', clickedCard);
 function clickedCard(event) {
   /*display card on click*/
 $(this).toggleClass('open show');
-/*push card to array*/
-openedCards.push(this);
+
+
 
 timeTrigger++;
 if (timeTrigger===1){
   startTimer();
 }
+
+if (event.target.classList.contains('card') && openedCards.length<2){
+  /*push card to array*/
+  openedCards.push(this);
+}
 /*add to moves and push to matched cards*/
-if (openedCards.length>=2){
+if (openedCards.length===2){
   addMoves(); /*need to declare moves function*/
 /*add function for checking matchedCards*/
   if (openedCards[0].innerHTML===openedCards[1].innerHTML){
@@ -126,8 +131,13 @@ if (openedCards.length>=2){
 function match(){
   openedCards[0].classList.add('match');
   openedCards[1].classList.add('match');
-  openedCards[0].classList.remove('')
+  openedCards[0].classList.remove('open', 'show');
 };
+
+function noMatch(){
+  openedCards[0].classList.add('unmatched');
+  openedCards[1].classList.add('unmatched');
+}
 
 function addMoves (){
   moves++;
