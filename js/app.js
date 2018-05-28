@@ -56,6 +56,7 @@ timerMin.innerHTML = minutes;
 timerSec.innerHTML = '0' + seconds;
 timeTrigger = 0;
 timer = document.querySelector('.timer');
+
 clearInterval(t);
 
 
