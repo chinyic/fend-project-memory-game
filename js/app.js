@@ -144,9 +144,12 @@ function noMatch(){
   openedCards[1].classList.add('unmatched','disabled');
 
   //timeout function for reverting card
-      setTimeOut(function revertCard(){
+      setTimeout(function revertCard(){
         removeOpenedClass();
         //add eventlistener clickedCard back in after timer
+        for (let i=0; i<matchArray.length; i++ ){
+          matchArray[i].classList.add('disabled');
+        }
       }, 1000);
 }
 
