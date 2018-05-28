@@ -42,6 +42,7 @@ let restart = document.querySelector('.restart');
 
 
 function startGame(){
+  $('.deck').on('click', '.card', clickedCard);
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
@@ -87,18 +88,17 @@ clearInterval(t);
        return array;
 }
 
-/*register deck to click event, second parameter card */
-$('.deck').on('click', '.card', clickedCard);
+
 /* The handler "knows" that any .card is e.target and this */
        // toggleClass the .open and .show classes
 /* set up the event listener for a card. If a card is clicked:
         *  - display the card's symbol (put this functionality in another function that you call from this one)
 */
 function clickedCard(event) {
+
+
   /*display card on click*/
-$(this).toggleClass('open show');
-
-
+$(this).toggleClass('open show disabled');
 
 timeTrigger++;
 if (timeTrigger===1){
@@ -123,15 +123,39 @@ if (openedCards.length===2){
   stopTimer();
   } else {
     /*add function for noMatch*/
-    noMatch()
+    for (let i=0; i<cards.length; i++){
+      cards[i].removeEventListener('click',clickedCard);
+      noMatch();
+    };
+//timeout function for reverting card
+    setTimeOut(function revertCard(){
+      removeOpenedCards();
+      //add eventlistener clickedCard back in after timer
+      for (let i=0; i<cards.length; i++){
+        cards[i].addEventListener('click',clickedCard);
+      };
+    }, 1000);
   }
 }
 };
 
+
+function removeOpenedCards(){
+  openedCards[0].remove('open', 'show','disabled');
+  openedCards[1].remove('open', 'show','disabled');
+  openedCards = [];
+
+}
+
 function match(){
-  openedCards[0].classList.add('match');
-  openedCards[1].classList.add('match');
-  openedCards[0].classList.remove('open', 'show');
+  openedCards[0].classList.add('match', 'disabled');
+  openedCards[1].classList.add('match', 'disabled');
+  openedCards[0].classList.remove('open', 'show', 'disabled');
+  openedCards[1].classList.remove('open', 'show', 'disabled');
+  matchArray.push(openedCards[0]);
+  matchArray.push(openedCards[1]);
+  openedCards =[];
+
 };
 
 function noMatch(){
