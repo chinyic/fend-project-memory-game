@@ -19,7 +19,7 @@ let deck = document.querySelector('.deck');
 /*variables for moves*/
 let moves = 0;
 let movesNumber = document.getElementById('moves-number');
-
+//stars variables
 let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
 /*timer*/
@@ -197,6 +197,10 @@ function startTimer(){
     *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
     */
+
+//stars functionality
+
+
 
 /*restart game*/
 restart.onclick = function (){
