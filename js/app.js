@@ -12,6 +12,7 @@ let cardShuffle = shuffle(cards);
 let openedCards = [];
 let matchedCards = 0;/*this is the number of matched pairs (8)*/
 let matchedCard = document.getElementsByClassName('match');
+let matchArray = [];
 /*deck of cards*/
 let deck = document.querySelector('.deck');
 
@@ -104,10 +105,28 @@ if (timeTrigger===1){
   startTimer();
 }
 /*add to moves and push to matched cards*/
-if (openedCards.length===2){
+if (openedCards.length>=2){
   addMoves(); /*need to declare moves function*/
 /*add function for checking matchedCards*/
+  if (openedCards[0].innerHTML===openedCards[1].innerHTML){
+  matchedCards++;
+  matchArray.push(openedCards[0]);
+  matchArray.push(openedCards[1]);
+  /*add function for match*/
+  match();
+  /*add function for stop timer*/
+  stopTimer();
+  } else {
+    /*add function for noMatch*/
+    noMatch()
+  }
 }
+};
+
+function match(){
+  openedCards[0].classList.add('match');
+  openedCards[1].classList.add('match');
+  openedCards[0].classList.remove('')
 };
 
 function addMoves (){
@@ -135,8 +154,8 @@ function startTimer(){
           timerSec.innerHTML = '0' + seconds;
         } else {
           timerSec.innerHTML = seconds;
-        } 1000;
-      });
+        };
+      }, 1000);
     }
 
 
