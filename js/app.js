@@ -22,6 +22,7 @@ let movesNumber = document.getElementById('moves-number');
 //stars variables
 let stars = document.getElementsByClassName('stars');
 let starsArray = document.querySelectorAll('.stars li');
+let starNumber = 0;
 /*timer*/
 let timer = document.querySelector('.timer');
 let timerMin = document.getElementById('timer-min');
@@ -200,15 +201,20 @@ function startTimer(){
 
 //stars functionality
 function starCount(){
-  if (moves >0 && moves <1){
+  if (moves <3){
     starNumber=3;
-  }
-  if (moves >=1 && moves >17) {
+  };
+  if (moves >=3 && moves <7) {
     starNumber = 2;
-    document.getElementById('star1').innerHTML=`<i class="fa fa-star-0"></i>`
+    document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
+};
+
+  if (moves >=7 && moves <22){
+    starNumber = 1;
+    document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
+    document.querySelector('.star2').innerHTML='<i class="fa fa-star-o"></i>';
   }
 }
-
 
 /*restart game*/
 restart.onclick = function (){
