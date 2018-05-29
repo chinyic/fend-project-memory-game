@@ -36,8 +36,7 @@ let t;
 let restart = document.querySelector('.restart');
 
 let modal = document.querySelector('.modal');
-let playAgain = document.querySelector('#button');
-
+let playAgain = document.getElementsByClassName('play-again');
 let closeWindow = document.getElementsByClassName('close')[0];
    /*
     * Display the cards on the page
@@ -52,31 +51,25 @@ function startGame(){
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match');
     deck.appendChild(cardShuffle[i]);
-
 /*reset cardarray to 0*/
-
-openedCards =[];
-matchedCards = 0;
-console.log('matched cards: '+matchedCards+';');
-
-
+  openedCards =[];
+  matchedCards = 0;
+  console.log('matched cards: '+matchedCards+';');
 /*reset moves counter*/
-moves = 0;
-movesNumber.innerHTML = moves;
-
+  moves = 0;
+  movesNumber.innerHTML = moves;
 /*reset timer */
-timer = document.querySelector('.timer');
-minutes = 0;
-seconds = 0;
-timerMin.innerHTML = minutes;
-timerSec.innerHTML = '0' + seconds;
-timeTrigger = 0;
+  timer = document.querySelector('.timer');
+  minutes = 0;
+  seconds = 0;
+  timerMin.innerHTML = minutes;
+  timerSec.innerHTML = '0' + seconds;
+  timeTrigger = 0;
 
-clearInterval(t);
+  clearInterval(t);
 
-
-  }
-};
+    }
+  };
 
 
    // Shuffle function from http://stackoverflow.com/a/2450976
@@ -155,7 +148,7 @@ function noMatch(){
         for (let i=0; i<matchArray.length; i++ ){
           matchArray[i].classList.add('disabled');
         }
-      }, 1000);
+      }, 500);
 }
 
 function removeOpenedClass(){
@@ -209,7 +202,7 @@ function starCount(){
     starsArray.length===2;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
   };
-  if (moves >=16 && moves <22){
+  if (moves >=16){
     starNumber = 1;
     starsArray.length===1;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
@@ -232,15 +225,16 @@ function endGame(){
   document.getElementsByClassName('final-moves')[0].innerHTML= moves;
   document.getElementsByClassName('final-stars')[0].innerHTML = starNumber;
   document.getElementsByClassName('time-taken')[0].innerHTML = timer.innerHTML;
+  let closeWindow = document.getElementsByClassName("close")[0];
+  closeWindow.addEventListener("click",close);
+  function close(){
+      modal.style.display = "none";
+  }
   };
 
-closeWindow.onclick = function (event){
-    if (event.target==modal){
-    modal.style.display = 'none';
-    }
-  }
 
-playAgain.onclick = function replay(){
+
+playAgain.onclick = function(){
     modal.style.display="none";
     cardShuffle;
     startGame();
