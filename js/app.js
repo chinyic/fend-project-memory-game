@@ -137,6 +137,7 @@ function match(){
   matchArray.push(openedCards[0]);
   matchArray.push(openedCards[1]);
   openedCards =[];
+
 };
 
 function noMatch(){
@@ -209,7 +210,7 @@ function starCount(){
 }
 
 function stopTimer(){
-  if (matchedCards===16){
+  if (matchedCards===8){
     clearInterval(t);
     endGame();
   }

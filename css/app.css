@@ -129,14 +129,15 @@ h1 {
 
 /*modal popup css*/
 #modal {
-  display: flex;
+  display: block;
   z-index: 1;
   top: 0;
   justify-content: center;
   position: fixed;
   padding-top: 100px;
   width: 100%;
-
+  height:100%;
+  margin:inherit;
 }
 
 .modal-content{
@@ -145,6 +146,8 @@ h1 {
   padding: 25px;
   font-size: 20px;
   text-align:center;
+  justify-content: center;
+
 }
 
 .close{
