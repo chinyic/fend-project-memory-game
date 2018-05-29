@@ -220,7 +220,7 @@ function stopTimer(){
 function endGame(){
   //popup upon delayed time
   setTimeout(function modalPopup(){
-    document.querySelector('.modal').style.display = "block";
+    modal.style.display = "block";
   },1000);
   document.getElementsByClassName('final-moves')[0].innerHTML= moves;
   document.getElementsByClassName('final-stars')[0].innerHTML = starNumber;
@@ -232,6 +232,8 @@ function endGame(){
 closeWindow.addEventListener("click",close);
   function close(){
   modal.style.display = "none";
+  cardShuffle;
+  startGame();
 }
 
 playAgain.onclick = function(){
@@ -242,9 +244,9 @@ playAgain.onclick = function(){
 
 window.onclick = function (event) {
   if (event.target == modal) {
-    document.querySelector('.modal').style.display = 'none';
+    modal.style.display = 'none';
     shuffle(cards);
-    newGame();
+    startGame();
   }
 }
 

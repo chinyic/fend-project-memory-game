@@ -130,6 +130,7 @@ h1 {
 /*modal popup css*/
 .play-again{
   display:block;
+  margin:auto;
 }
 
 #modal {
