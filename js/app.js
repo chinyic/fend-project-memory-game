@@ -35,9 +35,9 @@ let t;
 /*restart button*/
 let restart = document.querySelector('.restart');
 
-let modal = document.querySelector('.modal');
+let modal = document.querySelector('.modal-popup');
 let playAgain = document.querySelector('.play-again');
-let closeWindow = document.querySelector('.close')[0];
+let closeWindow = document.querySelector('.close');
    /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
@@ -225,16 +225,17 @@ function endGame(){
   document.getElementsByClassName('final-moves')[0].innerHTML= moves;
   document.getElementsByClassName('final-stars')[0].innerHTML = starNumber;
   document.getElementsByClassName('time-taken')[0].innerHTML = timer.innerHTML;
-    closeWindow.addEventListener("click",close);
-  function close(){
-      modal.style.display = "none";
-  }
+
+
   };
 
-
+closeWindow.addEventListener("click",close);
+  function close(){
+  modal.style.display = "none";
+}
 
 playAgain.onclick = function(){
-    document.querySelector('.modal').style.display="none";
+    modal.style.display="none";
     cardShuffle;
     startGame();
   }
