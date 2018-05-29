@@ -46,11 +46,12 @@ let closeWindow = document.querySelector('.close');
     */
 
 
-function startGame(){
+function startGame(cards){
   $('.deck').on('click', '.card', clickedCard);
   for (let i = 0; i < cardShuffle.length; i++) {
-    cardShuffle[i].classList.remove('open','show', 'match');
+    cardShuffle[i].classList.remove('open','show', 'match', 'disabled');
     deck.appendChild(cardShuffle[i]);
+    }
 /*reset cardarray to 0*/
   openedCards =[];
   matchedCards = 0;
@@ -65,10 +66,10 @@ function startGame(){
   timerMin.innerHTML = minutes;
   timerSec.innerHTML = '0' + seconds;
   timeTrigger = 0;
-
   clearInterval(t);
 
-    }
+
+
   };
 
 
@@ -94,8 +95,6 @@ function startGame(){
         *  - display the card's symbol (put this functionality in another function that you call from this one)
 */
 function clickedCard(event) {
-
-
   /*display card on click*/
 $(this).toggleClass('open show disabled');
 
@@ -103,7 +102,6 @@ timeTrigger++;
 if (timeTrigger===1){
   startTimer();
 }
-
 if (event.target.classList.contains('card') && openedCards.length<2){
   /*push card to open cards array*/
   openedCards.push(this);
