@@ -155,15 +155,15 @@ function noMatch(){
 
 
 function removeOpenedClass(){
-  openedCards[0].remove('open', 'show','disabled', 'unmatched');
-  openedCards[1].remove('open', 'show','disabled', 'unmatched');
+  openedCards[0].classList.remove('open', 'show','disabled', 'unmatched');
+  openedCards[1].classList.remove('open', 'show','disabled', 'unmatched');
   openedCards = [];
 
 }
 function addMoves (){
   moves++;
   movesNumber.innerHTML = moves;
-
+  starCount()
 }
 
 /*timer function*/
@@ -199,7 +199,15 @@ function startTimer(){
     */
 
 //stars functionality
-
+function starCount(){
+  if (moves >0 && moves <1){
+    starNumber=3;
+  }
+  if (moves >=1 && moves >17) {
+    starNumber = 2;
+    document.getElementById('star1').innerHTML=`<i class="fa fa-star-0"></i>`
+  }
+}
 
 
 /*restart game*/
