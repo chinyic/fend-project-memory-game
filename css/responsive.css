@@ -13,5 +13,11 @@
 
   .deck .card.show {
     font-size: 30px;
+    text-align: center;
+  }
+
+  .score-panel {
+    width: 300px;
+    font-size: 1em;
   }
 }
