@@ -10,7 +10,7 @@ let card = document.getElementsByClassName('card');
 let cards = [...card];
 let cardShuffle = shuffle(cards);
 let openedCards = [];
-let matchedCards = 0;/*this is the number of matched pairs (8)*/
+let matchedCards = 0;/*this is the number of matched cards (16)*/
 let matchedCard = document.getElementsByClassName('match');
 let matchArray = [];
 /*deck of cards*/
@@ -137,13 +137,11 @@ function match(){
   matchArray.push(openedCards[0]);
   matchArray.push(openedCards[1]);
   openedCards =[];
-
 };
 
 function noMatch(){
   openedCards[0].classList.add('unmatched', 'disabled');
   openedCards[1].classList.add('unmatched','disabled');
-
   //timeout function for reverting card
       setTimeout(function revertCard(){
         removeOpenedClass();
@@ -154,19 +152,17 @@ function noMatch(){
       }, 1000);
 }
 
-
 function removeOpenedClass(){
   openedCards[0].classList.remove('open', 'show','disabled', 'unmatched');
   openedCards[1].classList.remove('open', 'show','disabled', 'unmatched');
   openedCards = [];
-
 }
+
 function addMoves (){
   moves++;
   movesNumber.innerHTML = moves;
   starCount()
 }
-
 /*timer function*/
 function startTimer(){
   t = setInterval(function(){
@@ -179,7 +175,6 @@ function startTimer(){
             minutes = 0;
           }
         }
-
         /*add leading 0 to seconds timer*/
         timerMin.innerHTML = minutes;
         if (seconds<10) {
@@ -190,7 +185,6 @@ function startTimer(){
       }, 1000);
     }
 
-
 /*    *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
     *  - if the list already has another card, check to see if the two cards match
     *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
@@ -198,7 +192,6 @@ function startTimer(){
     *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
     */
-
 //stars functionality
 function starCount(){
   if (moves <3){
@@ -207,8 +200,7 @@ function starCount(){
   if (moves >=3 && moves <7) {
     starNumber = 2;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
-};
-
+  };
   if (moves >=7 && moves <22){
     starNumber = 1;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
@@ -216,6 +208,23 @@ function starCount(){
   }
 }
 
+function stopTimer(){
+  if (matchedCards===16){
+    clearInterval(t);
+    endGame();
+  }
+}
+
+function endGame(){
+  //popup upon delayed time
+  setTimeout(function modalPopup(){
+    document.getElementById('modal').style.display = "block";
+  },1000);
+  let closeWindow = document.getElementsByClassName('close');
+  closeWindow.onclick = function (){
+    modal.style.display = "none";
+  }
+}
 /*restart game*/
 restart.onclick = function (){
   cardShuffle;
