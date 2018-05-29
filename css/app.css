@@ -126,3 +126,23 @@ h1 {
     display: inline-block;
     text-align: right;
 }
+
+/*modal popup css*/
+#modal {
+  display: flex;
+
+}
+
+.modal-content{
+  border: 2px solid;
+  padding: 25px;
+  font-size: 20px;
+}
+
+.close{
+  float:right;
+  cursor: pointer;
+  font-size: 25px;
+
+
+}
