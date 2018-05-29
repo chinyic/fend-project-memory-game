@@ -36,8 +36,8 @@ let t;
 let restart = document.querySelector('.restart');
 
 let modal = document.querySelector('.modal');
-let playAgain = document.getElementsByClassName('play-again');
-let closeWindow = document.getElementsByClassName('close')[0];
+let playAgain = document.querySelector('.play-again');
+let closeWindow = document.querySelector('.close')[0];
    /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
@@ -148,7 +148,7 @@ function noMatch(){
         for (let i=0; i<matchArray.length; i++ ){
           matchArray[i].classList.add('disabled');
         }
-      }, 500);
+      }, 1000);
 }
 
 function removeOpenedClass(){
@@ -202,7 +202,7 @@ function starCount(){
     starsArray.length===2;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
   };
-  if (moves >=16){
+  if (moves >=16 && moves <22){
     starNumber = 1;
     starsArray.length===1;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
@@ -220,13 +220,12 @@ function stopTimer(){
 function endGame(){
   //popup upon delayed time
   setTimeout(function modalPopup(){
-    document.getElementById('modal').style.display = "block";
+    document.querySelector('.modal').style.display = "block";
   },1000);
   document.getElementsByClassName('final-moves')[0].innerHTML= moves;
   document.getElementsByClassName('final-stars')[0].innerHTML = starNumber;
   document.getElementsByClassName('time-taken')[0].innerHTML = timer.innerHTML;
-  let closeWindow = document.getElementsByClassName("close")[0];
-  closeWindow.addEventListener("click",close);
+    closeWindow.addEventListener("click",close);
   function close(){
       modal.style.display = "none";
   }
@@ -235,14 +234,14 @@ function endGame(){
 
 
 playAgain.onclick = function(){
-    modal.style.display="none";
+    document.querySelector('.modal').style.display="none";
     cardShuffle;
     startGame();
   }
 
 window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = 'none';
+    document.querySelector('.modal').style.display = 'none';
     shuffle(cards);
     newGame();
   }

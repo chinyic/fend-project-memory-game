@@ -129,7 +129,7 @@ h1 {
 
 /*modal popup css*/
 #modal {
-  display: none;
+  display: block;
   z-index: 1;
   top: 0;
   justify-content: center;
