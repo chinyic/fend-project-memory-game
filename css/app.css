@@ -65,13 +65,13 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
     transform: rotateY(0deg);
     /*add transition class*/
-    transition: 1s ease;
+    transition: 0.3s ease;
 }
 
 .deck .card.open {
     transform: rotateY(0);
     /*add transition class*/
-    transition: 1s ease;
+    transition: 0.3s ease;
     background: #02b3e4;
     cursor: default;
 }
@@ -129,7 +129,7 @@ h1 {
 
 /*modal popup css*/
 #modal {
-  display: block;
+  display: none;
   z-index: 1;
   top: 0;
   justify-content: center;

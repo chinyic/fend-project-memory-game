@@ -36,9 +36,9 @@ let t;
 let restart = document.querySelector('.restart');
 
 let modal = document.querySelector('.modal');
-let playAgain = document.getElementById('button');
+let playAgain = document.querySelector('#button');
 
-let closeWindow = document.getElementsByClassName('close');
+let closeWindow = document.getElementsByClassName('close')[0];
    /*
     * Display the cards on the page
     *   - shuffle the list of cards using the provided "shuffle" method below
@@ -200,15 +200,18 @@ function startTimer(){
     */
 //stars functionality
 function starCount(){
-  if (moves <3){
+  if (moves <10){
     starNumber=3;
+
   };
-  if (moves >=3 && moves <7) {
+  if (moves >10 && moves <16) {
     starNumber = 2;
+    starsArray.length===2;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
   };
-  if (moves >=7 && moves <22){
+  if (moves >=16 && moves <22){
     starNumber = 1;
+    starsArray.length===1;
     document.querySelector('.star1').innerHTML='<i class="fa fa-star-o"></i>';
     document.querySelector('.star2').innerHTML='<i class="fa fa-star-o"></i>';
   }
@@ -226,10 +229,13 @@ function endGame(){
   setTimeout(function modalPopup(){
     document.getElementById('modal').style.display = "block";
   },1000);
+  document.getElementsByClassName('final-moves')[0].innerHTML= moves;
+  document.getElementsByClassName('final-stars')[0].innerHTML = starNumber;
+  document.getElementsByClassName('time-taken')[0].innerHTML = timer.innerHTML;
   };
 
 closeWindow.onclick = function (event){
-    if (event.target===modal){
+    if (event.target==modal){
     modal.style.display = 'none';
     }
   }
@@ -239,6 +245,15 @@ playAgain.onclick = function replay(){
     cardShuffle;
     startGame();
   }
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+    shuffle(cards);
+    newGame();
+  }
+}
+
 /*restart game*/
 restart.onclick = function (){
   cardShuffle;
