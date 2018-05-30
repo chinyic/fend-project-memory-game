@@ -9,5 +9,5 @@ To begin the game, click on a card to reveal its content. Only two cards will be
 
 Clone or download the ZIP of this repository on your local machine. Open 'index.html' in your browser to start the game.
 
-##Contributing
+## Contributing
 This is a project of the Udacity FEND program. Contributions are welcome.
