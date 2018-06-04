@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  shuffle(cards);
   startGame()
 });
 
@@ -8,20 +9,20 @@ $(document).ready(function(){
     */
 let card = document.getElementsByClassName('card');
 let cards = [...card];
-let cardShuffle = shuffle(cards);
+const cardShuffle = shuffle(cards);
 let openedCards = [];
 let matchedCards = 0;/*this is the number of matched cards (16)*/
-let matchedCard = document.getElementsByClassName('match');
+const matchedCard = document.getElementsByClassName('match');
 let matchArray = [];
 /*deck of cards*/
-let deck = document.querySelector('.deck');
+const deck = document.querySelector('.deck');
 
 /*variables for moves*/
 let moves = 0;
-let movesNumber = document.getElementById('moves-number');
+const movesNumber = document.getElementById('moves-number');
 //stars variables
-let stars = document.getElementsByClassName('stars');
-let starsArray = document.querySelectorAll('.stars li');
+const stars = document.getElementsByClassName('stars');
+const starsArray = document.querySelectorAll('.stars li');
 let starNumber = 0;
 /*timer*/
 let timer = document.querySelector('.timer');
@@ -56,6 +57,8 @@ function startGame(cards){
   openedCards =[];
   matchedCards = 0;
   console.log('matched cards: '+matchedCards+';');
+  matchArray = [];
+
 /*reset moves counter*/
   moves = 0;
   movesNumber.innerHTML = moves;
@@ -67,7 +70,9 @@ function startGame(cards){
   timerSec.innerHTML = '0' + seconds;
   timeTrigger = 0;
   clearInterval(t);
-
+/*stars*/
+  starArray = [];
+  starNumber = 0;
 
 
   };
@@ -250,6 +255,6 @@ window.onclick = function (event) {
 
 /*restart game*/
 restart.onclick = function (){
-  cardShuffle;
+  shuffle(cards);
   startGame();
 }
