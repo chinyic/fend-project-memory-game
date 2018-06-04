@@ -48,7 +48,10 @@ let closeWindow = document.querySelector('.close');
 
 
 function startGame(cards){
+
+  cards.stopPropagation();
   $('.deck').on('click', '.card', clickedCard);
+
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match', 'disabled');
     deck.appendChild(cardShuffle[i]);
@@ -256,5 +259,5 @@ window.onclick = function (event) {
 /*restart game*/
 restart.onclick = function (){
   shuffle(cards);
-  startGame();
+    startGame();
 }
