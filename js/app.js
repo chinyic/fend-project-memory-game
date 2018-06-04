@@ -45,12 +45,9 @@ let closeWindow = document.querySelector('.close');
     *   - loop through each card and create its HTML
     *   - add each card's HTML to the page
     */
-
+$('.deck').on('click', '.card', clickedCard);
 
 function startGame(cards){
-
-  cards.stopPropagation();
-  $('.deck').on('click', '.card', clickedCard);
 
   for (let i = 0; i < cardShuffle.length; i++) {
     cardShuffle[i].classList.remove('open','show', 'match', 'disabled');
@@ -76,6 +73,8 @@ function startGame(cards){
 /*stars*/
   starArray = [];
   starNumber = 0;
+  document.querySelector('.star1').innerHTML = '<i class="fa fa-star"></i>'
+  document.querySelector('.star2').innerHTML = '<i class="fa fa-star"></i>'
 
 
   };
@@ -113,6 +112,7 @@ if (timeTrigger===1){
 if (event.target.classList.contains('card') && openedCards.length<2){
   /*push card to open cards array*/
   openedCards.push(this);
+
 }
 /*add to moves and push to matched cards*/
 if (openedCards.length===2){
@@ -125,8 +125,8 @@ if (openedCards.length===2){
   /*add function for stop timer*/
   stopTimer();
   } else {
-    /*add function for noMatch*/
-      noMatch();
+  noMatch();
+
     };
 
   }
@@ -147,9 +147,19 @@ function match(){
 function noMatch(){
   openedCards[0].classList.add('unmatched', 'disabled');
   openedCards[1].classList.add('unmatched','disabled');
+  Array.prototype.filter.call(cards, function (card) {
+    card.classList.add('disabled')
+  })
   //timeout function for reverting card
       setTimeout(function revertCard(){
         removeOpenedClass();
+//enable cards again and disable the matched cards
+        Array.prototype.filter.call(cards, function (card) {
+          card.classList.remove('disabled');
+          for (var i = 0; i < matchedCards.length; i++) {
+            matchedCards[i].classList.add('disabled')
+   }
+ })
         //add eventlistener clickedCard back in after timer
         for (let i=0; i<matchArray.length; i++ ){
           matchArray[i].classList.add('disabled');
@@ -238,13 +248,13 @@ function endGame(){
 closeWindow.addEventListener("click",close);
   function close(){
   modal.style.display = "none";
-  cardShuffle;
+  shuffle(cards);
   startGame();
 }
 
 playAgain.onclick = function(){
     modal.style.display="none";
-    cardShuffle;
+    shuffle(cards);
     startGame();
   }
 
